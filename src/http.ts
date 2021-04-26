@@ -16,11 +16,15 @@ app.get("/pages/client", (req, res) => {
   return res.render("html/client.html");
 });
 
+app.get("/pages/admin", (req, res) => {
+  return res.render("html/admin.html");
+});
+
 const http = createServer(app); // Creating the HTTP server
 const io = new Server(http); // Creating the WS server
 
 io.on("connection", (socket: Socket) => {
-  console.log('Here', socket.id);
+  console.log('Connected!', socket.id);
 });
 
 app.use(express.json());
